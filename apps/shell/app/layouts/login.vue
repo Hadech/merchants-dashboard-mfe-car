@@ -31,9 +31,11 @@
 
 <script setup lang="ts">
 import '~/assets/css/login.css'
+import bannerImg from '~/assets/images/banner-nickname.png'
+import logoImg from '~/assets/images/wompi-logo-black.png'
 
-const bannerSrc = ref('/images/banner-nickname.png')
-const logoSrc = ref('/images/wompi-logo-black.png')
+const bannerSrc = bannerImg
+const logoSrc = logoImg
 </script>
 
 <style scoped>

@@ -39,8 +39,10 @@
 </template>
 
 <script setup lang="ts">
+import logoImg from '~/assets/images/wompi-logo-black.png'
+
 const currentYear = new Date().getFullYear()
-const logoSrc = ref('/images/wompi-logo-black.png')
+const logoSrc = logoImg
 </script>
 
 <style scoped>
