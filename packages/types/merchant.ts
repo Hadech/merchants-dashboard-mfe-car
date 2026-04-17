@@ -9,6 +9,8 @@ export interface Merchant {
   public_key: string | null
   email: string | null
   phone_number: string | null
+  vpos_payment_link: { id: string } | null
+  accepted_payment_methods: string[]
 }
 
 export interface ApiEnvironment {
