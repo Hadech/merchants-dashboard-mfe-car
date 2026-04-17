@@ -74,6 +74,7 @@ export function useAuth() {
     localStorage.removeItem('refreshToken')
     localStorage.removeItem('userName')
     localStorage.removeItem('userUUID')
+    localStorage.removeItem('userPrincipalID')
     sessionStorage.clear()
 
     authState.user = null

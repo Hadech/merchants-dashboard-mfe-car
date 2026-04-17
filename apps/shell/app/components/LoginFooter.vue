@@ -3,7 +3,7 @@
     <div class="login-footer__content">
       <!-- Logo -->
       <img
-        src="/images/wompi-logo-black.png"
+        :src="logoSrc"
         alt="Wompi"
         class="login-footer__logo"
         width="120"
@@ -40,6 +40,7 @@
 
 <script setup lang="ts">
 const currentYear = new Date().getFullYear()
+const logoSrc = ref('/images/wompi-logo-black.png')
 </script>
 
 <style scoped>

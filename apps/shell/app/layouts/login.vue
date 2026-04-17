@@ -5,7 +5,7 @@
         <!-- Banner Image (hidden on mobile) -->
         <div class="login-banner">
           <img
-            src="/images/login-banner.png"
+            :src="bannerSrc"
             alt="Wompi Login"
             class="login-banner__image"
           />
@@ -14,7 +14,7 @@
         <!-- Form Area -->
         <div class="login-form-area">
           <img
-            src="/images/wompi-logo-black.png"
+            :src="logoSrc"
             alt="Wompi"
             class="login-logo"
             width="160"
@@ -31,6 +31,9 @@
 
 <script setup lang="ts">
 import '~/assets/css/login.css'
+
+const bannerSrc = ref('/images/banner-nickname.png')
+const logoSrc = ref('/images/wompi-logo-black.png')
 </script>
 
 <style scoped>

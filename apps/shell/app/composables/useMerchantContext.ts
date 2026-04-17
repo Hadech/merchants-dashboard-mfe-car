@@ -19,7 +19,46 @@ export function useMerchantContext() {
   function selectMerchant(merchant: Merchant) {
     currentMerchant.value = merchant
     sessionStorage.setItem('userPrincipalID', merchant.id)
+    localStorage.setItem('userPrincipalID', merchant.id)
     emit('merchant:changed', { merchantId: merchant.id, merchant })
+  }
+
+  /**
+   * Restore userPrincipalID from localStorage into sessionStorage
+   * when sessionStorage was lost (new tab, page refresh).
+   * If neither exists, fetch merchants from API.
+   */
+  async function ensureUserPrincipalID(): Promise<void> {
+    const fromSession = sessionStorage.getItem('userPrincipalID')
+    if (fromSession) return
+
+    const fromLocal = localStorage.getItem('userPrincipalID')
+    if (fromLocal) {
+      sessionStorage.setItem('userPrincipalID', fromLocal)
+      return
+    }
+
+    // Neither exists — try to fetch from API
+    const token = localStorage.getItem('token')
+    const userName = localStorage.getItem('userName')
+    if (!token || !userName) return
+
+    try {
+      const { createApiClient } = await import('@wompi/api-client')
+      const api = createApiClient({ useAuth: true, refreshSession: undefined })
+      const response = await api<{ data: { merchants: Array<{ id: string }> } }>(
+        `/merchant-users/user/email/${userName}`
+      )
+      const merchants = response.data?.merchants || []
+      if (merchants.length > 0) {
+        const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+        const merchant = merchants.find(m => uuidRegex.test(m.id)) || merchants[0]
+        sessionStorage.setItem('userPrincipalID', merchant.id)
+        localStorage.setItem('userPrincipalID', merchant.id)
+      }
+    } catch (e) {
+      console.warn('[MerchantContext] Could not restore userPrincipalID:', e)
+    }
   }
 
   function toggleEnvironment() {
@@ -49,5 +88,6 @@ export function useMerchantContext() {
     isSandbox,
     selectMerchant,
     toggleEnvironment,
+    ensureUserPrincipalID,
   }
 }
