@@ -2,6 +2,11 @@ import { defineStore } from 'pinia'
 import type { PayoutTransaction } from '@wompi/types'
 import { useApiClient } from '@wompi/api-client'
 
+/**
+ * Approvals store for payout approval workflows.
+ * These endpoints don't have a direct legacy equivalent in the old dashboard
+ * but follow the same API patterns.
+ */
 export const useApprovalsStore = defineStore('approvals', () => {
   const api = useApiClient()
 

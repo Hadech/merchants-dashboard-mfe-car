@@ -9,7 +9,34 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
-  css: ['~/assets/css/main.css'],
+  css: [
+    '~/assets/css/main.css',
+    '~/assets/css/global.css',
+    '~/assets/css/wompi-icons.css',
+    '~/assets/css/waybox-icons.css',
+    '~/assets/css/legacy-overrides.css',
+    '~/assets/css/forms-overrides.css',
+  ],
+
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.googleapis.com',
+        },
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.gstatic.com',
+          crossorigin: '',
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap',
+        },
+      ],
+    },
+  },
 
   modules: ['@nuxt/ui', '@pinia/nuxt'],
 

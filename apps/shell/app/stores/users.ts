@@ -2,6 +2,11 @@ import { defineStore } from 'pinia'
 import type { DashboardUser, CreateUserRequest } from '@wompi/types'
 import { useApiClient } from '@wompi/api-client'
 
+/**
+ * Matches legacy api/users.js:
+ * - getUsers(merchantId, filters) → GET /merchant-users/merchant/{merchantId}
+ * - merchantId comes from sessionStorage.getItem('userPrincipalID')
+ */
 export const useUsersStore = defineStore('users', () => {
   const api = useApiClient()
 
@@ -10,12 +15,20 @@ export const useUsersStore = defineStore('users', () => {
   const loading = ref(false)
   const error = ref<string | null>(null)
 
-  async function fetchUsers() {
+  function getMerchantId(): string {
+    return sessionStorage.getItem('userPrincipalID') || ''
+  }
+
+  /** GET /merchant-users/merchant/{merchantId} — legacy: getUsers(merchantId, filters) */
+  async function fetchUsers(filters?: Record<string, unknown>) {
     loading.value = true
     error.value = null
     try {
-      const data = await api('/users')
-      users.value = data.data || []
+      const merchantId = getMerchantId()
+      const data = await api(`/merchant-users/merchant/${merchantId}`, {
+        query: filters,
+      })
+      users.value = data.data?.merchantUsers || data.data || []
     } catch (e: unknown) {
       error.value = e instanceof Error ? e.message : 'Error al cargar usuarios'
     } finally {
@@ -27,8 +40,10 @@ export const useUsersStore = defineStore('users', () => {
     loading.value = true
     error.value = null
     try {
-      const data = await api(`/users/${id}`)
-      currentUser.value = data.data || null
+      const merchantId = getMerchantId()
+      const data = await api(`/merchant-users/merchant/${merchantId}`)
+      const allUsers = data.data?.merchantUsers || data.data || []
+      currentUser.value = allUsers.find((u: DashboardUser) => u.id === id) || null
       return currentUser.value
     } catch (e: unknown) {
       error.value = e instanceof Error ? e.message : 'Error al cargar usuario'
@@ -41,7 +56,11 @@ export const useUsersStore = defineStore('users', () => {
     loading.value = true
     error.value = null
     try {
-      const data = await api('/users', { method: 'POST', body: payload })
+      const merchantId = getMerchantId()
+      const data = await api(`/merchant-users/merchant/${merchantId}`, {
+        method: 'POST',
+        body: payload,
+      })
       return data.data
     } catch (e: unknown) {
       error.value = e instanceof Error ? e.message : 'Error al crear usuario'
@@ -54,7 +73,11 @@ export const useUsersStore = defineStore('users', () => {
     loading.value = true
     error.value = null
     try {
-      const data = await api(`/users/${id}`, { method: 'PATCH', body: payload })
+      const merchantId = getMerchantId()
+      const data = await api(`/merchant-users/merchant/${merchantId}`, {
+        method: 'PATCH',
+        body: payload,
+      })
       if (currentUser.value && currentUser.value.id === id) {
         Object.assign(currentUser.value, data.data)
       }
@@ -70,7 +93,11 @@ export const useUsersStore = defineStore('users', () => {
     loading.value = true
     error.value = null
     try {
-      await api(`/users/${id}/disable`, { method: 'POST' })
+      const merchantId = getMerchantId()
+      await api(`/merchant-users/merchant/${merchantId}`, {
+        method: 'PATCH',
+        body: { id, status: 'DISABLED' },
+      })
       if (currentUser.value && currentUser.value.id === id) {
         currentUser.value.status = 'DISABLED'
       }

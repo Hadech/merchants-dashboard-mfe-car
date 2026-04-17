@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import type { TransactionFilters, Transaction } from '@wompi/types'
-import { useApiClient } from '@wompi/api-client'
+import { useTransactionsApi } from '~/composables/useTransactionsApi'
 
 export function removeEmpty(filters: Record<string, unknown>): Record<string, string> {
   const result: Record<string, string> = {}
@@ -20,8 +20,13 @@ function lastXDays(days: number): [string, string] {
   return [from.toISOString().split('T')[0], now.toISOString().split('T')[0]]
 }
 
+/**
+ * Matches legacy TransactionPayments.vue:
+ * - callGetTransactions({ from_date, until_date, page_size, page }) + optional filters
+ * - getReportTransaction for CSV download via /transactions/download_filtered
+ */
 export const useTransactionsStore = defineStore('transactions', () => {
-  const api = useApiClient()
+  const { getTransactions: fetchApi, downloadReport: downloadApi } = useTransactionsApi()
 
   const filters = ref<TransactionFilters>({
     id: '',
@@ -39,7 +44,6 @@ export const useTransactionsStore = defineStore('transactions', () => {
   const pageSize = ref(20)
   const totalResults = ref(0)
 
-  // Date range — default last 30 days (same as legacy)
   const [defaultFrom, defaultUntil] = lastXDays(30)
   const fromDate = ref(defaultFrom)
   const untilDate = ref(defaultUntil)
@@ -53,14 +57,12 @@ export const useTransactionsStore = defineStore('transactions', () => {
     error.value = null
     try {
       const cleanFilters = removeEmpty(filters.value as Record<string, unknown>)
-      const data = await api<{ data: Transaction[]; meta: { total_results: number; page_size: number } }>('/transactions', {
-        query: {
-          ...cleanFilters,
-          from_date: fromDate.value,
-          until_date: untilDate.value,
-          page: page.value,
-          page_size: pageSize.value,
-        },
+      const data = await fetchApi({
+        ...cleanFilters,
+        from_date: fromDate.value,
+        until_date: untilDate.value,
+        page: page.value,
+        page_size: pageSize.value,
       })
       transactions.value = data.data || []
       totalResults.value = data.meta?.total_results || 0
@@ -72,11 +74,13 @@ export const useTransactionsStore = defineStore('transactions', () => {
     }
   }
 
+  /** Legacy: api/transactions.js > getTransactionReport — GET /transactions/download_filtered */
   async function downloadReport() {
     const cleanFilters = removeEmpty(filters.value as Record<string, unknown>)
-    return api('/transactions/download_filtered', {
-      query: cleanFilters,
-      responseType: 'blob',
+    return downloadApi({
+      ...cleanFilters,
+      from_date: fromDate.value,
+      until_date: untilDate.value,
     })
   }
 

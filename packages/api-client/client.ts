@@ -29,10 +29,12 @@ export function createApiClient(config: ApiClientConfig = {}) {
     baseURL: resolveBaseUrl(),
     timeout,
 
-    async onRequest({ options }) {
+    async onRequest({ request, options }) {
       if (!useAuth) return
 
-      if (refreshSession) {
+      // Only attempt refresh if we have a refresh token
+      const hasRefreshToken = !!localStorage.getItem('refreshToken')
+      if (refreshSession && hasRefreshToken) {
         try {
           await refreshSession()
         } catch {
@@ -47,6 +49,14 @@ export function createApiClient(config: ApiClientConfig = {}) {
 
       const token = getToken?.() || localStorage.getItem('token')
       const userPrincipalID = sessionStorage.getItem('userPrincipalID')
+
+      // DEBUG — remove after fixing
+      console.log('[API DEBUG]', {
+        url: request,
+        baseURL: options.baseURL,
+        token: token ? `${token.slice(0, 20)}...` : 'NULL',
+        userPrincipalID: userPrincipalID || 'NULL',
+      })
 
       if (token) {
         options.headers = new Headers(options.headers)

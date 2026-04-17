@@ -1,0 +1,195 @@
+/* ============================================
+   waybox-icons — Icon Font
+   Converted from legacy merchants-dashboard SASS
+   ============================================ */
+
+@font-face {
+  font-family: 'waybox-icons';
+  src: url('../fonts/waybox-icons.eot?hwarap');
+  src: url('../fonts/waybox-icons.eot?hwarap#iefix') format('embedded-opentype'),
+       url('../fonts/waybox-icons.ttf?hwarap') format('truetype'),
+       url('../fonts/waybox-icons.woff?hwarap') format('woff'),
+       url('../fonts/waybox-icons.svg?hwarap#waybox-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Base class */
+.waybox-icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'waybox-icons', sans-serif !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Color helper classes */
+.waybox-icon.cl-warning {
+  color: #ff9c1b;
+}
+.waybox-icon.cl-success {
+  color: #B0F2AE;
+}
+.waybox-icon.cl-danger {
+  color: #f64d79;
+}
+
+/* Icon glyphs */
+.waybox-icon.add-circle-dual:before {
+  content: "\e900";
+}
+.waybox-icon.add-circle:before {
+  content: "\e901";
+}
+
+.waybox-icon.alert-circle:before {
+  content: "\e902";
+}
+.waybox-icon.alert-diamond:before {
+  content: "\e903";
+}
+.waybox-icon.alert-triangle:before {
+  content: "\e904";
+}
+.waybox-icon.arrow-button-up-3:before {
+  content: "\e905";
+}
+.waybox-icon.arrow-button-up:before {
+  content: "\e906";
+}
+.waybox-icon.arrow-left:before {
+  content: "\e907";
+}
+.waybox-icon.arrow-rectangle-up-2:before {
+  content: "\e908";
+}
+.waybox-icon.arrow-rectangle-up:before {
+  content: "\e909";
+}
+.waybox-icon.arrow-right-1:before {
+  content: "\e90a";
+}
+.waybox-icon.caret-square-up:before {
+  content: "\e90b";
+}
+.waybox-icon.caret-up:before {
+  content: "\e90c";
+}
+.waybox-icon.circle-add:before {
+  content: "\e90d";
+}
+.waybox-icon.cloud-upload:before {
+  content: "\e90f";
+}
+.waybox-icon.cog:before {
+  content: "\e910";
+}
+.waybox-icon.Cursor-Information-Alternate:before {
+  content: "\e911";
+}
+.waybox-icon.Cursor-Question-Alternate:before {
+  content: "\e912";
+}
+.waybox-icon.cursor-information:before {
+  content: "\e913";
+}
+.waybox-icon.cursor-question:before {
+  content: "\e914";
+}
+.waybox-icon.e-commerce-cart:before {
+  content: "\e915";
+}
+.waybox-icon.home:before {
+  content: "\e917";
+}
+.waybox-icon.duplicate:before {
+  content: "\e918";
+}
+.waybox-icon.external-link:before {
+  content: "\e919";
+}
+.waybox-icon.image-file-upload:before {
+  content: "\e91b";
+}
+.waybox-icon.information-circle1:before {
+  content: "\e91c";
+}
+.waybox-icon.information-circle:before {
+  content: "\e91d";
+}
+.waybox-icon.lab-tube-bottle:before {
+  content: "\e91e";
+}
+.waybox-icon.lab-tube-experiment:before {
+  content: "\e91f";
+}
+.waybox-icon.lab-tube:before {
+  content: "\e920";
+}
+.waybox-icon.lab-tubes:before {
+  content: "\e921";
+}
+.waybox-icon.logout-alternate:before {
+  content: "\e922";
+}
+.waybox-icon.logout:before {
+  content: "\e923";
+}
+.waybox-icon.logout-circle:before {
+  content: "\e924";
+}
+.waybox-icon.module-four:before {
+  content: "\e925";
+}
+.waybox-icon.navigation-menu:before {
+  content: "\e92a";
+}
+.waybox-icon.open:before {
+  content: "\e92b";
+}
+.waybox-icon.performance-increase:before {
+  content: "\e92c";
+}
+.waybox-icon.qr-code-scan:before {
+  content: "\e92d";
+}
+.waybox-icon.qr-code:before {
+  content: "\e92f";
+}
+.waybox-icon.question-circle:before {
+  content: "\e930";
+}
+.waybox-icon.question-help-circle:before {
+  content: "\e931";
+}
+.waybox-icon.question-help-message:before {
+  content: "\e933";
+}
+.waybox-icon.question-help-square:before {
+  content: "\e934";
+}
+.waybox-icon.scroll-vertical-1:before {
+  content: "\e935";
+}
+.waybox-icon.scroll-vertical:before {
+  content: "\e936";
+}
+.waybox-icon.select-arrows:before {
+  content: "\e937";
+}
+.waybox-icon.shopping-basket-add:before {
+  content: "\e938";
+}
+.waybox-icon.stack-21:before {
+  content: "\e939";
+}
+.waybox-icon.stack-2:before {
+  content: "\e93a";
+}

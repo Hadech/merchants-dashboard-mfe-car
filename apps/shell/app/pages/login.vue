@@ -35,6 +35,8 @@
 
 <script setup lang="ts">
 import { useAuth } from '@wompi/auth'
+import { useApiClient } from '@wompi/api-client'
+import { createApiClient } from '@wompi/api-client'
 
 definePageMeta({ layout: false })
 
@@ -48,7 +50,28 @@ async function handleLogin() {
   loading.value = true
   error.value = null
   try {
+    // 1. Login with Cognito
     await login(credentials)
+
+    // 2. Fetch merchants to get userPrincipalID (same as legacy flow)
+    try {
+      const api = createApiClient({ useAuth: true, refreshSession: undefined })
+      const email = credentials.username
+      const response = await api<{ data: { merchants: Array<{ id: string; permissions: string[]; roleName: string }> } }>(
+        `/merchant-users/user/email/${email}`
+      )
+      const merchants = response.data?.merchants || []
+      if (merchants.length > 0) {
+        // Find first merchant with valid UUID (same as legacy)
+        const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+        const merchant = merchants.find(m => uuidRegex.test(m.id)) || merchants[0]
+        sessionStorage.setItem('userPrincipalID', merchant.id)
+      }
+    } catch (permError) {
+      console.warn('Could not fetch merchants after login:', permError)
+      // Continue anyway — some endpoints might work without userPrincipalID
+    }
+
     navigateTo('/transactions')
   } catch (e: unknown) {
     error.value = e instanceof Error ? e.message : 'Error al iniciar sesión'

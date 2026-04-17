@@ -1,0 +1,647 @@
+/* ============================================
+   Wompi-Icons — Icon Font CSS
+   Converted from merchants-dashboard/styles/_fonts.sass
+   ============================================ */
+
+/* === @font-face === */
+@font-face {
+  font-family: Wompi-Icons;
+  src: url('../fonts/Wompi-Icons.eot?hwarap');
+  src: url('../fonts/Wompi-Icons.eot?hwarap#iefix') format('embedded-opentype'),
+       url('../fonts/Wompi-Icons.ttf?hwarap') format('truetype'),
+       url('../fonts/Wompi-Icons.woff?hwarap') format('woff'),
+       url('../fonts/Wompi-Icons.svg?hwarap#waybox-icons') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+/* === Base Icon Class === */
+.ic {
+  font-family: Wompi-Icons, sans-serif !important;
+  speak: never;
+  font-style: normal;
+  vertical-align: middle;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Helper Classes === */
+.ic_primary {
+  color: #2c2a29;
+}
+
+.ic_secondary {
+  color: #dfff61;
+}
+
+.ic_circular_primary {
+  background-color: #dfff61;
+  color: #2c2a29;
+  border-radius: 1000px;
+  text-align: center;
+}
+
+.ic_circular_secondary {
+  background-color: #2c2a29;
+  color: #dfff61;
+  border-radius: 1000px;
+  text-align: center;
+}
+
+.ic_square_primary {
+  background-color: #dfff61;
+  color: #2c2a29;
+  border-radius: unset;
+  text-align: center;
+}
+
+.ic_square_secondary {
+  background-color: #2c2a29;
+  color: #dfff61;
+  border-radius: unset;
+  text-align: center;
+}
+
+/* === Size Classes === */
+.ic_sm {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+}
+
+.ic_sm .ic:before {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.ic_md {
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  padding: 4px;
+}
+
+.ic_md .ic:before {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.ic_lg {
+  width: 44px;
+  height: 44px;
+  font-size: 44px;
+  padding: 4px;
+}
+
+.ic_lg .ic:before {
+  font-size: 28px;
+  line-height: 44px;
+}
+
+.ic_b {
+  width: 56px;
+  height: 56px;
+  font-size: 56px;
+  padding: 8px;
+}
+
+.ic_b .ic:before {
+  font-size: 40px;
+  line-height: 56px;
+}
+
+.ic_xb {
+  width: 72px;
+  height: 72px;
+  font-size: 72px;
+  padding: 8px;
+}
+
+.ic_xb .ic:before {
+  font-size: 56px;
+  line-height: 72px;
+}
+
+/* === Icon Classes === */
+
+/* --- Transport & Vehicles --- */
+.ic_scooter:before { content: '\e900'; }
+.ic_rocket:before { content: '\e901'; }
+.ic_motorcycle:before { content: '\e902'; }
+.ic_motorcycle-trailer:before { content: '\e903'; }
+.ic_motorcycle-touring:before { content: '\e904'; }
+.ic_motorcycle-sport:before { content: '\e905'; }
+.ic_motorcycle-scooter:before { content: '\e906'; }
+.ic_motorcycle-quad:before { content: '\e907'; }
+.ic_motorcycle-cross:before { content: '\e908'; }
+.ic_motorcycle-classic:before { content: '\e909'; }
+.ic_motorcycle-chopper:before { content: '\e90a'; }
+.ic_flight:before { content: '\e90b'; }
+.ic_flight-late:before { content: '\e90c'; }
+.ic_flight-cancelled:before { content: '\e90d'; }
+.ic_car:before { content: '\e90e'; }
+.ic_car-tax:before { content: '\e90f'; }
+.ic_car-suv:before { content: '\e910'; }
+.ic_car-subway:before { content: '\e911'; }
+.ic_car-ship:before { content: '\e912'; }
+.ic_car-sedan:before { content: '\e913'; }
+.ic_car-search:before { content: '\e914'; }
+.ic_car-pickup:before { content: '\e915'; }
+.ic_car-minivan:before { content: '\e916'; }
+.ic_car-mini-truck:before { content: '\e917'; }
+.ic_car-hatchback:before { content: '\e918'; }
+.ic_car-coupe:before { content: '\e919'; }
+.ic_car-bus:before { content: '\e91a'; }
+.ic_bike:before { content: '\e91b'; }
+.ic_bike-vintage:before { content: '\e91c'; }
+.ic_bike-road:before { content: '\e91d'; }
+.ic_bike-mountain:before { content: '\e91e'; }
+.ic_bike-kids:before { content: '\e91f'; }
+.ic_bike-folding:before { content: '\e920'; }
+.ic_bike-electric:before { content: '\e921'; }
+.ic_bike-dual:before { content: '\e922'; }
+.ic_bike-bmx:before { content: '\e923'; }
+
+/* --- UI & Actions --- */
+.ic_volume:before { content: '\e924'; }
+.ic_volume-mute:before { content: '\e925'; }
+.ic_upload:before { content: '\e926'; }
+.ic_toggle:before { content: '\e927'; }
+.ic_temperature:before { content: '\e928'; }
+.ic_sync:before { content: '\e929'; }
+.ic_spinner:before { content: '\e92a'; }
+.ic_sort-amount-up:before { content: '\e92b'; }
+.ic_slider:before { content: '\e92c'; }
+.ic_slider-2:before { content: '\e92d'; }
+.ic_sign-out:before { content: '\e92e'; }
+.ic_sign-in:before { content: '\e92f'; }
+.ic_share1:before { content: '\e930'; }
+.ic_search-plus:before { content: '\e931'; }
+.ic_search-money:before { content: '\e932'; }
+.ic_search-less:before { content: '\e933'; }
+.ic_search-chart:before { content: '\e934'; }
+.ic_redo-money:before { content: '\e935'; }
+.ic_puzzle-piece:before { content: '\e936'; }
+.ic_project-diagram:before { content: '\e937'; }
+.ic_plus:before { content: '\e938'; }
+.ic_percentage:before { content: '\e939'; }
+.ic_pencil:before { content: '\e93a'; }
+.ic_minus:before { content: '\e93b'; }
+.ic_menu-dots-v_fill:before { content: '\e93c'; }
+.ic_menu-dots-v_empty:before { content: '\e93d'; }
+.ic_menu-dots-h:before { content: '\e93e'; }
+.ic_menu-dots-double-v:before { content: '\e93f'; }
+.ic_menu-bar:before { content: '\e940'; }
+.ic_list:before { content: '\e941'; }
+.ic_forbidden:before { content: '\e942'; }
+.ic_font:before { content: '\e943'; }
+.ic_filter:before { content: '\e944'; }
+.ic_external-link:before { content: '\e945'; }
+.ic_error:before { content: '\e946'; }
+.ic_edit:before { content: '\e947'; }
+.ic_download:before { content: '\e948'; }
+.ic_dot:before { content: '\e949'; }
+.ic_cube-3d:before { content: '\e94a'; }
+.ic_copy:before { content: '\e94b'; }
+.ic_comments-dots:before { content: '\e94c'; }
+.ic_comment:before { content: '\e94d'; }
+.ic_comment-line:before { content: '\e94e'; }
+.ic_comment-dots:before { content: '\e94f'; }
+.ic_code:before { content: '\e950'; }
+.ic_cloud:before { content: '\e951'; }
+.ic_cloud-upload:before { content: '\e952'; }
+.ic_cloud-sun:before { content: '\e953'; }
+.ic_cloud-download:before { content: '\e954'; }
+
+/* --- Circle variants --- */
+.ic_circle_empty:before { content: '\e955'; }
+.ic_circle-question_fill:before { content: '\e956'; }
+.ic_circle-question_empty:before { content: '\e957'; }
+.ic_circle-plus_fill:before { content: '\e958'; }
+.ic_circle-plus_empty:before { content: '\e959'; }
+.ic_circle-play_fill:before { content: '\e95a'; }
+.ic_circle-play_empty:before { content: '\e95b'; }
+.ic_circle-pause_fill:before { content: '\e95c'; }
+.ic_circle-pause_empty:before { content: '\e95d'; }
+.ic_circle-money_fill:before { content: '\e95e'; }
+.ic_circle-money_empty:before { content: '\e95f'; }
+.ic_circle-minus_fill:before { content: '\e960'; }
+.ic_circle-minus_empty:before { content: '\e961'; }
+.ic_circle-error_fill:before { content: '\e962'; }
+.ic_circle-error_empty:before { content: '\e963'; }
+.ic_circle-check_fill:before { content: '\e964'; }
+.ic_circle-check_empty:before { content: '\e965'; }
+.ic_check:before { content: '\e966'; }
+.ic_check-box:before { content: '\e967'; }
+.ic_boxes-pile:before { content: '\e968'; }
+.ic_bookmark:before { content: '\e969'; }
+.ic_aling-right:before { content: '\e96a'; }
+.ic_aling-left:before { content: '\e96b'; }
+.ic_aling-justify:before { content: '\e96c'; }
+.ic_aling-center:before { content: '\e96d'; }
+
+/* --- Social & Brands --- */
+.ic_youtube_line:before { content: '\e96e'; }
+.ic_youtube_fill:before { content: '\e96f'; }
+.ic_whatsapp_line:before { content: '\e970'; }
+.ic_whatsapp_fill:before { content: '\e971'; }
+.ic_twitter_line:before { content: '\e972'; }
+.ic_twitter_fill:before { content: '\e973'; }
+.ic_linkedin_line:before { content: '\e974'; }
+.ic_linkedin_fill:before { content: '\e975'; }
+.ic_like:before { content: '\e976'; }
+.ic_instagram_line:before { content: '\e977'; }
+.ic_instagram_fill:before { content: '\e978'; }
+.ic_frontify:before { content: '\e979'; }
+.ic_figma:before { content: '\e97a'; }
+.ic_facebook_line:before { content: '\e97b'; }
+.ic_facebook_fill:before { content: '\e97c'; }
+.ic_apple:before { content: '\e97d'; }
+
+/* --- Wompi Brand (old) --- */
+.ic_wompi_primary_positive_old:before { content: '\e97e'; }
+.ic_wompi_primary_negative_old:before { content: '\e97f'; color: #fafafa; }
+.ic_wompi_isotype_positive_old:before { content: '\e980'; }
+.ic_wompi_isotype_negative_old:before { content: '\e981'; color: #fafafa; }
+
+/* --- Shapes & UI elements --- */
+.ic_star_fill:before { content: '\e982'; }
+.ic_star_empty:before { content: '\e983'; }
+.ic_square:before { content: '\e984'; }
+.ic_square-plus:before { content: '\e985'; }
+.ic_heart_fill:before { content: '\e986'; }
+.ic_heart_empty:before { content: '\e987'; }
+.ic_expand:before { content: '\e988'; }
+.ic_channels:before { content: '\e989'; }
+.ic_carousel:before { content: '\e98a'; }
+.ic_affinity:before { content: '\e98b'; }
+
+/* --- People & Users --- */
+.ic_walking:before { content: '\e98c'; }
+.ic_users:before { content: '\e98d'; }
+.ic_users-slash:before { content: '\e98e'; }
+.ic_users-check:before { content: '\e98f'; }
+.ic_users-2:before { content: '\e990'; }
+.ic_user:before { content: '\e991'; }
+.ic_user-plus:before { content: '\e992'; }
+.ic_user-form:before { content: '\e993'; }
+.ic_user-error:before { content: '\e994'; }
+.ic_user-direct:before { content: '\e995'; }
+.ic_user-check:before { content: '\e996'; }
+.ic_user-check-2:before { content: '\e997'; }
+.ic_restroom:before { content: '\e998'; }
+.ic_hiking:before { content: '\e999'; }
+.ic_constructor:before { content: '\e99a'; }
+.ic_constructor-team:before { content: '\e99b'; }
+.ic_child:before { content: '\e99c'; }
+
+/* --- Money & Commerce --- */
+.ic_withdraw-cash:before { content: '\e99d'; }
+.ic_wallet:before { content: '\e99e'; }
+.ic_wallet-coin:before { content: '\e99f'; }
+.ic_tag-sale:before { content: '\e9a0'; }
+.ic_tag-price:before { content: '\e9a1'; }
+.ic_shopping:before { content: '\e9a2'; }
+.ic_shopping-cart:before { content: '\e9a3'; }
+.ic_shopping-cart-plus:before { content: '\e9a4'; }
+.ic_send-money:before { content: '\e9a5'; }
+.ic_send-money-to:before { content: '\e9a6'; }
+.ic_send-money-to-2:before { content: '\e9a7'; }
+.ic_send-money-from:before { content: '\e9a8'; }
+.ic_send-money-from-2:before { content: '\e9a9'; }
+.ic_saving:before { content: '\e9aa'; }
+.ic_sack-cash:before { content: '\e9ab'; }
+.ic_qr-send:before { content: '\e9ac'; }
+.ic_qr-scan:before { content: '\e9ad'; }
+.ic_qr-plus:before { content: '\e9ae'; }
+.ic_qr-heart:before { content: '\e9af'; }
+.ic_phone-money:before { content: '\e9b0'; }
+.ic_money:before { content: '\e9b1'; }
+.ic_money-slash:before { content: '\e9b2'; }
+.ic_money-plus:before { content: '\e9b3'; }
+.ic_money-minus:before { content: '\e9b4'; }
+.ic_money-exchange:before { content: '\e9b5'; }
+.ic_money-exchange-2:before { content: '\e9b6'; }
+.ic_money-3:before { content: '\e9b7'; }
+.ic_money-2:before { content: '\e9b8'; }
+.ic_international-payment:before { content: '\e9b9'; }
+.ic_insert-coin:before { content: '\e9ba'; }
+.ic_gift:before { content: '\e9bb'; }
+.ic_gem:before { content: '\e9bc'; }
+.ic_coins:before { content: '\e9bd'; }
+.ic_coins-growth:before { content: '\e9be'; }
+.ic_coin:before { content: '\e9bf'; }
+.ic_checks:before { content: '\e9c0'; }
+.ic_basket:before { content: '\e9c1'; }
+.ic_barcode:before { content: '\e9c2'; }
+.ic_barcode-scan:before { content: '\e9c3'; }
+.ic_atm:before { content: '\e9c4'; }
+
+/* --- Objects & Tools --- */
+.ic_wrench:before { content: '\e9c5'; }
+.ic_umbrella:before { content: '\e9c6'; }
+.ic_umbrella-beach:before { content: '\e9c7'; }
+.ic_turn:before { content: '\e9c8'; }
+.ic_trophy:before { content: '\e9c9'; }
+.ic_trash:before { content: '\e9ca'; }
+.ic_token:before { content: '\e9cb'; }
+.ic_target:before { content: '\e9cc'; }
+.ic_tablet:before { content: '\e9cd'; }
+.ic_swimming-pool:before { content: '\e9ce'; }
+.ic_stone:before { content: '\e9cf'; }
+.ic_smart-watch:before { content: '\e9d0'; }
+.ic_shower:before { content: '\e9d1'; }
+.ic_settings:before { content: '\e9d2'; }
+.ic_settings-2:before { content: '\e9d3'; }
+.ic_send-message:before { content: '\e9d4'; }
+.ic_search:before { content: '\e9d5'; }
+.ic_save:before { content: '\e9d6'; }
+.ic_project:before { content: '\e9d7'; }
+.ic_printer:before { content: '\e9d8'; }
+.ic_plug:before { content: '\e9d9'; }
+.ic_paperclip:before { content: '\e9da'; }
+.ic_paper-plane:before { content: '\e9db'; }
+.ic_paper-plane-money:before { content: '\e9dc'; }
+.ic_newslatter:before { content: '\e9dd'; }
+.ic_movie:before { content: '\e9de'; }
+.ic_mobile:before { content: '\e9df'; }
+.ic_mobile-wave:before { content: '\e9e0'; }
+.ic_mobile-check:before { content: '\e9e1'; }
+.ic_mobile-chat:before { content: '\e9e2'; }
+.ic_microphone:before { content: '\e9e3'; }
+.ic_medal:before { content: '\e9e4'; }
+.ic_medal-2:before { content: '\e9e5'; }
+.ic_marketplace:before { content: '\e9e6'; }
+.ic_mail:before { content: '\e9e7'; }
+.ic_mail-open:before { content: '\e9e8'; }
+.ic_lightbulb:before { content: '\e9e9'; }
+.ic_layers:before { content: '\e9ea'; }
+.ic_laptop:before { content: '\e9eb'; }
+.ic_laptop-chat:before { content: '\e9ec'; }
+.ic_inbox:before { content: '\e9ed'; }
+.ic_image:before { content: '\e9ee'; }
+.ic_headset:before { content: '\e9ef'; }
+.ic_gavel:before { content: '\e9f0'; }
+.ic_gas-pump:before { content: '\e9f1'; }
+.ic_game-controller:before { content: '\e9f2'; }
+.ic_futbol:before { content: '\e9f3'; }
+.ic_flag:before { content: '\e9f4'; }
+.ic_fire-slash:before { content: '\e9f5'; }
+.ic_fire-extinguisher:before { content: '\e9f6'; }
+.ic_door:before { content: '\e9f7'; }
+.ic_desktop:before { content: '\e9f8'; }
+.ic_construction:before { content: '\e9f9'; }
+.ic_car-id:before { content: '\e9fa'; }
+.ic_camera:before { content: '\e9fb'; }
+.ic_calculator:before { content: '\e9fc'; }
+.ic_box:before { content: '\e9fd'; }
+.ic_book:before { content: '\e9fe'; }
+.ic_book-2:before { content: '\e9ff'; }
+.ic_birthday-cake:before { content: '\ea00'; }
+.ic_bezier:before { content: '\ea01'; }
+.ic_balance:before { content: '\ea02'; }
+.ic_address-book:before { content: '\ea03'; }
+
+/* --- Hands --- */
+.ic_hand-two:before { content: '\ea04'; }
+.ic_hand-thumbs-up:before { content: '\ea05'; }
+.ic_hand-thumbs-down:before { content: '\ea06'; }
+.ic_hand-three:before { content: '\ea07'; }
+.ic_hand-tap:before { content: '\ea08'; }
+.ic_hand-paper:before { content: '\ea09'; }
+.ic_hand-one:before { content: '\ea0a'; }
+.ic_hand-investment:before { content: '\ea0b'; }
+.ic_hand-holding-document:before { content: '\ea0c'; }
+.ic_hand-holding-coins:before { content: '\ea0d'; }
+.ic_hand-holding-coin:before { content: '\ea0e'; }
+.ic_hand-holding-coin-2:before { content: '\ea0f'; }
+.ic_hand-holding-cash:before { content: '\ea10'; }
+.ic_hand-holding-card:before { content: '\ea11'; }
+.ic_hand-holding-box:before { content: '\ea12'; }
+.ic_hand-handshake:before { content: '\ea13'; }
+.ic_hand-four:before { content: '\ea14'; }
+.ic_hand-five:before { content: '\ea15'; }
+
+/* --- Location & Maps --- */
+.ic_thumbtack:before { content: '\ea16'; }
+.ic_route-right:before { content: '\ea17'; }
+.ic_map:before { content: '\ea18'; }
+.ic_map-marker:before { content: '\ea19'; }
+.ic_map-marker-plus:before { content: '\ea1a'; }
+.ic_location:before { content: '\ea1b'; }
+.ic_globe:before { content: '\ea1c'; }
+.ic_globe-2:before { content: '\ea1d'; }
+.ic_directions:before { content: '\ea1e'; }
+
+/* --- Food & Drink --- */
+.ic_restaurant:before { content: '\ea1f'; }
+.ic_popcorn:before { content: '\ea20'; }
+.ic_coffee:before { content: '\ea21'; }
+.ic_cocktail:before { content: '\ea22'; }
+.ic_burger:before { content: '\ea23'; }
+.ic_baby-bottle:before { content: '\ea24'; }
+
+/* --- Files & Documents --- */
+.ic_invoice:before { content: '\ea25'; }
+.ic_invoice-search:before { content: '\ea26'; }
+.ic_invoice-edit:before { content: '\ea27'; }
+.ic_invoice-add:before { content: '\ea28'; }
+.ic_folder:before { content: '\ea29'; }
+.ic_files-money:before { content: '\ea2a'; }
+.ic_file-search:before { content: '\ea2b'; }
+.ic_file-number:before { content: '\ea2c'; }
+.ic_file-money:before { content: '\ea2d'; }
+.ic_file-download:before { content: '\ea2e'; }
+.ic_file-coin:before { content: '\ea2f'; }
+.ic_file-check:before { content: '\ea30'; }
+.ic_file-add:before { content: '\ea31'; }
+.ic_documents:before { content: '\ea32'; }
+.ic_document:before { content: '\ea33'; }
+.ic_document-search:before { content: '\ea34'; }
+.ic_document-pdf:before { content: '\ea35'; }
+.ic_document-excel:before { content: '\ea36'; }
+.ic_document-edit:before { content: '\ea37'; }
+.ic_document-coin:before { content: '\ea38'; }
+
+/* --- Faces & Emotions --- */
+.ic_pet:before { content: '\ea39'; }
+.ic_face-smile:before { content: '\ea3a'; }
+.ic_face-sad:before { content: '\ea3b'; }
+.ic_face-meh:before { content: '\ea3c'; }
+.ic_face-laughbeam:before { content: '\ea3d'; }
+.ic_face-laugh:before { content: '\ea3e'; }
+.ic_face-grin-wink-2:before { content: '\ea3f'; }
+.ic_face-grin-wink-1:before { content: '\ea40'; }
+.ic_face-dog:before { content: '\ea41'; }
+.ic_face-cat:before { content: '\ea42'; }
+.ic_face-angry:before { content: '\ea43'; }
+
+/* --- Calendar --- */
+.ic_calendar:before { content: '\ea44'; }
+.ic_calendar-times:before { content: '\ea45'; }
+.ic_calendar-stopwatch:before { content: '\ea46'; }
+.ic_calendar-star:before { content: '\ea47'; }
+.ic_calendar-plus:before { content: '\ea48'; }
+.ic_calendar-month:before { content: '\ea49'; }
+.ic_calendar-minus:before { content: '\ea4a'; }
+.ic_calendar-exclamation:before { content: '\ea4b'; }
+.ic_calendar-edit:before { content: '\ea4c'; }
+.ic_calendar-day:before { content: '\ea4d'; }
+.ic_calendar-clock:before { content: '\ea4e'; }
+.ic_calendar-check:before { content: '\ea4f'; }
+
+/* --- Communication & Charts --- */
+.ic_tabot:before { content: '\ea50'; }
+.ic_podcast:before { content: '\ea51'; }
+.ic_phone-contact:before { content: '\ea52'; }
+.ic_contact-center:before { content: '\ea53'; }
+.ic_call-help:before { content: '\ea54'; }
+.ic_chart-pie:before { content: '\ea55'; }
+.ic_chart-pie-2:before { content: '\ea56'; }
+.ic_chart-line:before { content: '\ea57'; }
+.ic_chart-bar:before { content: '\ea58'; }
+.ic_chart-bar-window:before { content: '\ea59'; }
+.ic_chart-bar-2:before { content: '\ea5a'; }
+.ic_chart-analytics:before { content: '\ea5b'; }
+.ic_chat-lock:before { content: '\ea5c'; }
+
+/* --- Security & Identity --- */
+.ic_equipment:before { content: '\ea5d'; }
+.ic_face-mask:before { content: '\ea5e'; }
+.ic_fingerprint:before { content: '\ea5f'; }
+.ic_id-face:before { content: '\ea60'; }
+.ic_id-fingerprint:before { content: '\ea61'; }
+.ic_id-key:before { content: '\ea62'; }
+.ic_id-lock:before { content: '\ea63'; }
+.ic_key:before { content: '\ea64'; }
+.ic_lock-dynamic-key:before { content: '\ea65'; }
+.ic_lock-error:before { content: '\ea66'; }
+.ic_lock-open:before { content: '\ea67'; }
+.ic_lock:before { content: '\ea68'; }
+.ic_mail-lock:before { content: '\ea69'; }
+.ic_no-smoking:before { content: '\ea6a'; }
+.ic_password-input:before { content: '\ea6b'; }
+.ic_password-safe:before { content: '\ea6c'; }
+.ic_password:before { content: '\ea6d'; }
+.ic_safe-box:before { content: '\ea6e'; }
+.ic_shield-money:before { content: '\ea6f'; }
+.ic_shield-user:before { content: '\ea70'; }
+.ic_shield:before { content: '\ea71'; }
+.ic_stethoscope:before { content: '\ea72'; }
+.ic_view-slash:before { content: '\ea73'; }
+.ic_view:before { content: '\ea74'; }
+
+/* --- Cards & Payment --- */
+.ic_phone-card:before { content: '\ea75'; }
+.ic_phone-card-slash:before { content: '\ea76'; }
+.ic_e-prepago:before { content: '\ea77'; }
+.ic_e-card:before { content: '\ea78'; }
+.ic_cards:before { content: '\ea79'; }
+.ic_card:before { content: '\ea7a'; }
+.ic_card-slash:before { content: '\ea7b'; }
+.ic_card-removing:before { content: '\ea7c'; }
+.ic_card-number:before { content: '\ea7d'; }
+.ic_card-id:before { content: '\ea7e'; }
+.ic_card-contactless:before { content: '\ea7f'; }
+
+/* --- Business & Investment --- */
+.ic_product-number:before { content: '\ea80'; }
+.ic_pocket:before { content: '\ea81'; }
+.ic_plant:before { content: '\ea82'; }
+.ic_investment:before { content: '\ea83'; }
+.ic_briefcase:before { content: '\ea84'; }
+.ic_briefcase-medical:before { content: '\ea85'; }
+.ic_briefcase-error:before { content: '\ea86'; }
+.ic_briefcase-bank:before { content: '\ea87'; }
+.ic_briefcase-3:before { content: '\ea88'; }
+.ic_briefcase-2:before { content: '\ea89'; }
+
+/* --- Buildings & Places --- */
+.ic_store:before { content: '\ea8a'; }
+.ic_store-pending:before { content: '\ea8b'; }
+.ic_store-ok:before { content: '\ea8c'; }
+.ic_store-error:before { content: '\ea8d'; }
+.ic_store-add:before { content: '\ea8e'; }
+.ic_museum:before { content: '\ea8f'; }
+.ic_industry:before { content: '\ea90'; }
+.ic_industry-2:before { content: '\ea91'; }
+.ic_house:before { content: '\ea92'; }
+.ic_hospital:before { content: '\ea93'; }
+.ic_home:before { content: '\ea94'; }
+.ic_building:before { content: '\ea95'; }
+.ic_building-2:before { content: '\ea96'; }
+.ic_bank:before { content: '\ea97'; }
+.ic_bank-add:before { content: '\ea98'; }
+
+/* --- Arrows & Navigation --- */
+.ic_up-and-down:before { content: '\ea99'; }
+.ic_share:before { content: '\ea9a'; }
+.ic_share-external-link:before { content: '\ea9b'; }
+.ic_reply:before { content: '\ea9c'; }
+.ic_reply-all:before { content: '\ea9d'; }
+.ic_long-arrow-up:before { content: '\ea9e'; }
+.ic_long-arrow-right:before { content: '\ea9f'; }
+.ic_long-arrow-left:before { content: '\eaa0'; }
+.ic_long-arrow-down:before { content: '\eaa1'; }
+.ic_exchange:before { content: '\eaa2'; }
+.ic_arrow-up:before { content: '\eaa3'; }
+.ic_arrow-right:before { content: '\eaa4'; }
+.ic_arrow-leftw-left:before { content: '\eaa5'; }
+.ic_arrow-left:before { content: '\eaa6'; }
+.ic_arrow-diagonal:before { content: '\eaa7'; }
+.ic_angle-up:before { content: '\eaa8'; }
+.ic_angle-up-small:before { content: '\eaa9'; }
+.ic_angle-right:before { content: '\eaaa'; }
+.ic_angle-right-small:before { content: '\eaab'; }
+.ic_angle-left:before { content: '\eaac'; }
+.ic_angle-left-small:before { content: '\eaad'; }
+.ic_angle-down:before { content: '\eaae'; }
+.ic_angle-down-small:before { content: '\eaaf'; }
+.ic_angle-double-up:before { content: '\eab0'; }
+.ic_angle-double-right:before { content: '\eab1'; }
+.ic_angle-double-left:before { content: '\eab2'; }
+.ic_angle-double-down:before { content: '\eab3'; }
+
+/* --- Alerts & Notifications --- */
+.ic_megaphone:before { content: '\eab4'; }
+.ic_information_line:before { content: '\eab5'; }
+.ic_information_fill:before { content: '\eab6'; }
+.ic_information_empty:before { content: '\eab7'; }
+.ic_bell:before { content: '\eab8'; }
+.ic_assistence:before { content: '\eab9'; }
+.ic_alert_line:before { content: '\eaba'; }
+.ic_alert_fill:before { content: '\eabb'; }
+.ic_alert_empty:before { content: '\eabc'; }
+.ic_alarm:before { content: '\eabd'; }
+
+/* --- Accessibility --- */
+.ic_wheelchair:before { content: '\eabe'; }
+.ic_universal-access:before { content: '\eabf'; }
+.ic_shine:before { content: '\eac0'; }
+.ic_elderly:before { content: '\eac1'; }
+
+/* --- Additional / Newer Icons --- */
+.ic_alert-alone:before { content: '\eac2'; }
+.ic_money-repeat:before { content: '\eac3'; }
+.ic_money-check:before { content: '\eac4'; }
+.ic_bank-checkk:before { content: '\eac5'; }
+.ic_chart-analytics1:before { content: '\eac6'; }
+.ic_branches:before { content: '\eac7'; }
+.ic_file-search1:before { content: '\eac8'; }
+.ic_mail-notification:before { content: '\eac9'; }
+.ic_payout:before { content: '\eaca'; }
+.ic_send-cash:before { content: '\eacb'; }
+
+/* --- Wompi Brand (new) --- */
+.ic_wompi_primary_positive:before { content: '\eacd'; }
+.ic_wompi_primary_negative:before { content: '\eacd'; color: #fafafa; }
+.ic_wompi_isotype_positive:before { content: '\eacc'; }
+.ic_wompi_isotype_negative:before { content: '\eacc'; color: #fafafa; }
+
+/* --- NFC --- */
+.ic_phone-card-nfc:before { content: '\eace'; }

@@ -1,0 +1,57 @@
+/* === Legacy Overrides === */
+/* Estilos globales que replican clases del Legacy_Dashboard */
+
+/* === Content Box (legacy .content-box) === */
+.content-box {
+  border-radius: 20px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.102751);
+  background-color: #fff;
+  border: 1px solid #eee;
+  padding: 0.9rem;
+  width: 100%;
+  margin-bottom: 1.4rem;
+}
+
+@media screen and (min-width: 64rem) {
+  .content-box {
+    padding: 1.1rem;
+  }
+}
+
+/* === Details Table (legacy .details-table) === */
+.details-table .details-table__row {
+  border-bottom: 1px solid #eee;
+  padding: 0.4rem 0;
+  font-size: 0.85rem;
+  line-height: 2.2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.details-table .details-table__row .details-table__name {
+  color: #555555;
+  font-weight: 400;
+}
+
+.details-table .details-table__row .details-table__value {
+  color: #252525;
+  font-weight: bold;
+  text-align: right;
+}
+
+.details-table .details-table__row .details-table__value.url {
+  font-family: monospace;
+  font-size: 0.9em;
+  word-break: break-all;
+}
+
+/* === View Content (legacy .view-content) === */
+.view-content {
+  padding: 1.5rem 1rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .view-content {
+    padding: 2rem 2.375rem;
+  }
+}

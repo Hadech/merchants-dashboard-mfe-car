@@ -1,0 +1,38 @@
+/* === Forms Overrides === */
+
+/* Disabled inputs */
+input:disabled,
+textarea:disabled {
+  background-color: #f9fafd;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* Placeholder color */
+input::placeholder,
+textarea::placeholder {
+  color: #c0c4cc;
+}
+
+/* Select option styles */
+select option {
+  height: 34px;
+  line-height: 34px;
+  padding: 0 12px;
+}
+
+select option:hover {
+  background-color: #f5f7fa;
+}
+
+/* Date picker — selected date primary color */
+.date-picker-selected,
+[data-selected] {
+  background-color: #2A2C29;
+  color: #fff;
+}
+
+[data-selected]:hover {
+  background-color: #2A2C29;
+  opacity: 0.9;
+}

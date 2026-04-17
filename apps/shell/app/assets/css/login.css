@@ -1,0 +1,110 @@
+/* ============================================
+   Login-Specific Styles
+   Scoped under .login-layout class
+   ============================================ */
+
+/* === Typography === */
+.login-layout {
+  font-family: "Open Sans", sans-serif;
+  color: #2C2A29;
+}
+
+.login-layout h1,
+.login-layout h2,
+.login-layout h3,
+.login-layout h4,
+.login-layout h5 {
+  font-family: "CIBFontSans Bold", sans-serif;
+  font-weight: 700;
+  color: #2C2A29;
+}
+
+.login-layout h1 {
+  font-size: 2rem;
+  letter-spacing: -0.006em;
+}
+
+.login-layout h2 {
+  font-size: 1.75rem;
+  letter-spacing: -0.006em;
+}
+
+.login-layout h3 {
+  font-size: 1.5rem;
+  letter-spacing: -0.0045em;
+}
+
+.login-layout h4 {
+  font-size: 1.25rem;
+  letter-spacing: -0.0038em;
+}
+
+.login-layout h5 {
+  font-size: 1.125rem;
+}
+
+/* === Primary Button === */
+.login-layout .btn-primary {
+  background-color: #B0F2AE;
+  color: #2C2A29;
+  border: none;
+  border-radius: 25px;
+  min-width: 146px;
+  height: 48px;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+  cursor: pointer;
+  padding: 0 24px;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-layout .btn-primary:hover {
+  background-color: #72C571;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 1px 6px rgba(0, 0, 0, 0.15);
+}
+
+.login-layout .btn-primary:disabled {
+  background-color: #CACACA;
+  color: #616161;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* === Secondary Button === */
+.login-layout .btn-secondary {
+  background-color: transparent;
+  color: #2C2A29;
+  border: 1px solid #2C2A29;
+  border-radius: 25px;
+  min-width: 146px;
+  height: 48px;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+  cursor: pointer;
+  padding: 0 24px;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.login-layout .btn-secondary:hover {
+  background-color: rgba(44, 42, 41, 0.05);
+}
+
+/* === Links === */
+.login-layout a,
+.login-layout .link {
+  color: #2C2A29;
+  text-decoration: underline;
+}
+
+/* === Input Gap === */
+.login-layout .login-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.login-layout .login-fields--nickname {
+  gap: 15px;
+}
