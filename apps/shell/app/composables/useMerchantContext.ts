@@ -44,10 +44,20 @@ export function useMerchantContext() {
     if (!token || !userName) return
 
     try {
+      // Extract email from idToken (userName might be a nickname)
+      const idToken = localStorage.getItem('idToken')
+      let email = userName
+      if (idToken) {
+        try {
+          const payload = JSON.parse(atob(idToken.split('.')[1]))
+          if (payload.email) email = payload.email.toLowerCase()
+        } catch { /* fallback to userName */ }
+      }
+
       const { createApiClient } = await import('@wompi/api-client')
       const api = createApiClient({ useAuth: true, refreshSession: undefined })
       const response = await api<{ data: { merchants: Array<{ id: string }> } }>(
-        `/merchant-users/user/email/${userName}`
+        `/merchant-users/user/email/${email}`
       )
       const merchants = response.data?.merchants || []
       if (merchants.length > 0) {

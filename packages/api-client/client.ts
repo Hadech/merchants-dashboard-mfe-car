@@ -50,14 +50,6 @@ export function createApiClient(config: ApiClientConfig = {}) {
       const token = getToken?.() || localStorage.getItem('token')
       const userPrincipalID = sessionStorage.getItem('userPrincipalID')
 
-      // DEBUG — remove after fixing
-      console.log('[API DEBUG]', {
-        url: request,
-        baseURL: options.baseURL,
-        token: token ? `${token.slice(0, 20)}...` : 'NULL',
-        userPrincipalID: userPrincipalID || 'NULL',
-      })
-
       if (token) {
         options.headers = new Headers(options.headers)
         options.headers.set('Authorization', `Bearer ${token}`)

@@ -24,12 +24,22 @@ export default defineNuxtRouteMiddleware(async (to) => {
       const userName = localStorage.getItem('userName')
       if (userName) {
         try {
+          // Extract email from idToken (userName might be a nickname)
+          const idToken = localStorage.getItem('idToken')
+          let email = userName
+          if (idToken) {
+            try {
+              const payload = JSON.parse(atob(idToken.split('.')[1]))
+              if (payload.email) email = payload.email.toLowerCase()
+            } catch { /* fallback to userName */ }
+          }
+
           const { createApiClient } = await import('@wompi/api-client')
           const api = createApiClient({ useAuth: true, refreshSession: undefined })
           const response = await api<{ data: { merchants: Array<{ id: string }> } }>(
-            `/merchant-users/user/email/${userName}`
+            `/merchant-users/user/email/${email}`
           )
-          const merchants = response.data?.merchants || []
+          const merchants = response?.data?.merchants || []
           if (merchants.length > 0) {
             const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
             const merchant = merchants.find((m: { id: string }) => uuidRegex.test(m.id)) || merchants[0]

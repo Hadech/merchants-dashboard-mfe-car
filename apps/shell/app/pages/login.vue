@@ -106,19 +106,40 @@ async function handleLogin() {
     // 2. Fetch merchants to get userPrincipalID (same as legacy flow)
     try {
       const api = createApiClient({ useAuth: true, refreshSession: undefined })
-      const email = credentials.username.toLowerCase()
+      
+      // Extract email from Cognito idToken (the username might be a nickname, not an email)
+      const idToken = localStorage.getItem('idToken')
+      let email = credentials.username.toLowerCase()
+      if (idToken) {
+        try {
+          const payload = JSON.parse(atob(idToken.split('.')[1]))
+          console.log('[Login] idToken payload:', { email: payload.email, sub: payload.sub, preferred_username: payload.preferred_username })
+          if (payload.email) {
+            email = payload.email.toLowerCase()
+          }
+        } catch (e) { console.warn('[Login] Could not decode idToken:', e) }
+      }
+      
+      console.log('[Login] Fetching merchants for email:', email)
+      
+      // ofetch returns the parsed body directly (no axios .data wrapper)
+      // API response shape: { data: { merchants: [...] } }
       const response = await api<{ data: { merchants: Array<{ id: string; permissions: string[]; roleName: string }> } }>(
         `/merchant-users/user/email/${email}`
       )
-      const merchants = response.data?.merchants || []
+      console.log('[Login] Merchant response:', JSON.stringify(response).slice(0, 500))
+      const merchants = response?.data?.merchants || []
       if (merchants.length > 0) {
         const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
         const merchant = merchants.find(m => uuidRegex.test(m.id)) || merchants[0]
         sessionStorage.setItem('userPrincipalID', merchant.id)
         localStorage.setItem('userPrincipalID', merchant.id)
+        console.log('[Login] userPrincipalID set:', merchant.id)
+      } else {
+        console.warn('[Login] No merchants found in response:', response)
       }
     } catch (permError) {
-      console.warn('Could not fetch merchants after login:', permError)
+      console.warn('[Login] Could not fetch merchants after login:', permError)
     }
 
     navigateTo('/transactions')
