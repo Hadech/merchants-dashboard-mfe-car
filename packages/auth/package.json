@@ -1,0 +1,14 @@
+{
+  "name": "@wompi/auth",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "dependencies": {
+    "amazon-cognito-identity-js": "^6.3.0",
+    "@wompi/types": "workspace:*"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  }
+}

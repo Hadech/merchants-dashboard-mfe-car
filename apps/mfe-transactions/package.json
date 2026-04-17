@@ -1,0 +1,27 @@
+{
+  "name": "@wompi/mfe-transactions",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev --port 3001",
+    "build": "nuxt build",
+    "lint": "echo 'lint ok'"
+  },
+  "dependencies": {
+    "@module-federation/vite": "^1.14.4",
+    "@nuxt/ui": "^3.0.0",
+    "@pinia/nuxt": "^0.9.0",
+    "@wompi/api-client": "workspace:*",
+    "@wompi/auth": "workspace:*",
+    "@wompi/event-bus": "workspace:*",
+    "@wompi/i18n": "workspace:*",
+    "@wompi/types": "workspace:*",
+    "@wompi/ui": "workspace:*",
+    "nuxt": "^3.16.0",
+    "pinia": "^3.0.0",
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0"
+  }
+}

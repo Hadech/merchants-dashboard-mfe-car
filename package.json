@@ -1,0 +1,19 @@
+{
+  "name": "merchants-dashboard-mfe",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test"
+  },
+  "devDependencies": {
+    "@oxc-minify/binding-darwin-arm64": "^0.126.0",
+    "@oxc-parser/binding-darwin-arm64": "^0.126.0",
+    "@oxc-transform/binding-darwin-arm64": "^0.126.0",
+    "@types/node": "^25.6.0",
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.0"
+  },
+  "packageManager": "pnpm@9.15.0"
+}

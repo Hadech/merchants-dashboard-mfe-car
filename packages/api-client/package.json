@@ -1,0 +1,12 @@
+{
+  "name": "@wompi/api-client",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "dependencies": {
+    "ofetch": "^1.4.0",
+    "@wompi/types": "workspace:*",
+    "@wompi/auth": "workspace:*"
+  }
+}
