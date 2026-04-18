@@ -13,13 +13,27 @@ export function createApiClient(config: ApiClientConfig = {}) {
   } = config
 
   function resolveBaseUrl(): string {
-    const url = baseUrl || (() => {
+    if (baseUrl) {
+      const b = baseUrl
+      if (!usePrefix) return b
+      return b.endsWith('/') ? `${b}dashboard` : `${b}/dashboard`
+    }
+
+    const DEFAULT_URL = 'https://api.co.dev.wompi.dev/v1'
+    let url: string = DEFAULT_URL
+
+    try {
       const stored = localStorage.getItem('apiEnvironment')
       if (stored) {
-        return JSON.parse(stored).baseUrl
+        const parsed = JSON.parse(stored)
+        if (parsed?.baseUrl) url = parsed.baseUrl
       }
-      return String(import.meta.env.VITE_API_GW_BASE_URL)
-    })()
+    } catch { /* ignore */ }
+
+    if (url === DEFAULT_URL) {
+      const envUrl = import.meta.env?.VITE_API_GW_BASE_URL
+      if (envUrl) url = String(envUrl)
+    }
 
     if (!usePrefix) return url
     return url.endsWith('/') ? `${url}dashboard` : `${url}/dashboard`
