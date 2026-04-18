@@ -1,0 +1,31 @@
+export const permissionActions = {
+  menu: 'dashboard/menu',
+  list: 'dashboard/list',
+  refund: 'dashboard/refund',
+  nullify: 'dashboard/nullify',
+  read: 'dashboard/read',
+  share: 'dashboard/share',
+  create: 'dashboard/create',
+  toggle: 'dashboard/toggle',
+  view: 'dashboard/view',
+  upload: 'dashboard/upload',
+  update: 'dashboard/update',
+  delete: 'dashboard/delete',
+  dataphoneManage: 'app/dataphone-manage',
+  dataphonePurchase: 'app/dataphone-purchase',
+} as const
+
+export const permissionSubjects = {
+  transactions: 'transactions',
+  virtualDataphone: 'transactions/virtual-dataphone',
+  paymentLinks: 'transactions/payment-links',
+  reports: 'reports',
+  disbursements: 'disbursements',
+  disputes: 'disputes',
+  procedures: 'procedures',
+  developers: 'developers',
+  users: 'users',
+  myAccount: 'my-account',
+  payouts: 'payouts',
+  administration: 'administration',
+} as const
