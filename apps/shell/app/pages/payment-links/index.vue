@@ -11,15 +11,10 @@
     <div class="payment-links-content">
       <!-- Create button -->
       <div class="create-btn-row">
-        <UButton
-          color="primary"
-          size="lg"
-          class="create-link-btn"
-          icon="i-heroicons-shopping-bag"
-          @click="navigateTo('/payment-links/create')"
-        >
+        <button class="create-link-btn" @click="navigateTo('/payment-links/create')">
+          <UIcon name="i-heroicons-shopping-bag" class="create-link-btn__icon" />
           Crear link de pago
-        </UButton>
+        </button>
       </div>
 
       <!-- Links Box -->
@@ -190,10 +185,27 @@ onMounted(() => fetchLinks())
 }
 
 .create-link-btn {
-  font-size: 1.1rem !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #2C2A29;
+  color: #DFFF61;
+  border: none;
+  font-size: 1.1rem;
   font-weight: 600;
-  border-radius: 2rem !important;
-  padding: 0.8em 1.5em;
+  border-radius: 2rem;
+  padding: 0.7em 1.5em;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.create-link-btn:hover {
+  opacity: 0.9;
+}
+
+.create-link-btn__icon {
+  font-size: 1.2em;
+  transform: scale(1.3);
 }
 
 /* Links Box — replica legacy */
