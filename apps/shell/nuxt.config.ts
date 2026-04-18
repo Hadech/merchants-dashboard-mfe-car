@@ -61,6 +61,11 @@ export default defineNuxtConfig({
       //       name: 'mfe-settings',
       //       entry: process.env.MFE_SETTINGS_URL || 'http://localhost:3003/remoteEntry.js',
       //     },
+      //     'mfe-home': {
+      //       type: 'module',
+      //       name: 'mfe-home',
+      //       entry: process.env.MFE_HOME_URL || 'http://localhost:3004/remoteEntry.js',
+      //     },
       //   },
       //   shared: {
       //     vue: { singleton: true, requiredVersion: '^3.5.0' },

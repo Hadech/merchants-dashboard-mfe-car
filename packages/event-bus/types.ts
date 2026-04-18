@@ -5,6 +5,10 @@ export type EventMap = {
   'environment:changed': { environment: ApiEnvironment }
   'auth:logout': void
   'auth:session-refreshed': { accessToken: string }
+  'mfe-home:navigate': { path: string; query?: Record<string, string> }
+  'mfe-home:error': { code: string; message: string }
+  'mfe-home:logout': void
+  'mfe-home:merchant-redirect': { path: string }
 }
 
 export type EventKey = keyof EventMap
