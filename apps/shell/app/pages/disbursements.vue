@@ -64,40 +64,41 @@
       </div>
 
       <div v-else-if="hasFetched && disbursements.length > 0" class="results-box">
-        <UTable :columns="columns" :rows="disbursements">
-          <template #cell-amount_in_cents="{ row }">
-            <strong class="amount-cell">COP {{ formatPrice(row.amount_in_cents) }}</strong>
-          </template>
-
-          <template #cell-status="{ row }">
-            <WStatusBadge
-              :status="statusToType(row.status)"
-              :label="statusToString(row.status)"
-            />
-          </template>
-
-          <template #cell-bank_account="{ row }">
-            <span v-if="row.bank_account_type === 'CHECKING'">Corriente</span>
-            <span v-else-if="row.bank_account_type === 'SAVINGS'">Ahorros</span>
-            &nbsp;{{ row.bank_account_number }}
-          </template>
-
-          <template #cell-created_at="{ row }">
-            <div class="date-cell">
-              <UIcon name="i-heroicons-calendar" class="date-icon" />
-              <span>{{ formatDate(row.created_at) }}</span>
-            </div>
-          </template>
-        </UTable>
+        <table class="disbursements-table">
+          <thead>
+            <tr>
+              <th style="min-width:100px">Monto</th>
+              <th>Estado</th>
+              <th>Cuenta bancaria</th>
+              <th style="min-width:120px">Fecha de creación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="row in disbursements" :key="row.id || row.created_at">
+              <td><strong class="amount-cell">COP {{ formatPrice(row.amount_in_cents) }}</strong></td>
+              <td>
+                <WStatusBadge :status="statusToType(row.status)" :label="statusToString(row.status)" />
+              </td>
+              <td>
+                <span v-if="row.bank_account_type === 'CHECKING'">Corriente</span>
+                <span v-else-if="row.bank_account_type === 'SAVINGS'">Ahorros</span>
+                &nbsp;{{ row.bank_account_number }}
+              </td>
+              <td>
+                <div class="date-cell">
+                  <span class="ic ic_calendar date-icon"></span>
+                  <span>{{ formatDate(row.created_at) }}</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
         <!-- Pagination -->
-        <div v-if="totalResults > 0" class="pagination-container">
-          <UPagination
-            v-model="currentPage"
-            :total="totalResults"
-            :items-per-page="pageSize"
-            @update:model-value="onPageChanged"
-          />
+        <div v-if="totalResults > pageSize" class="pagination-container">
+          <button class="page-btn" :disabled="currentPage <= 1" @click="onPageChanged(currentPage - 1)">‹</button>
+          <span class="page-info">Página {{ currentPage }} de {{ Math.ceil(totalResults / pageSize) }}</span>
+          <button class="page-btn" :disabled="currentPage >= Math.ceil(totalResults / pageSize)" @click="onPageChanged(currentPage + 1)">›</button>
         </div>
       </div>
 
@@ -315,6 +316,41 @@ onMounted(() => {
   border-radius: 3px;
 }
 
+/* Table */
+.disbursements-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.disbursements-table thead {
+  background: #FAFAFA;
+}
+
+.disbursements-table th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #616161;
+  text-transform: uppercase;
+  border-bottom: 1px solid #EBEEF5;
+}
+
+.disbursements-table td {
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  color: #2C2A29;
+  border-bottom: 1px solid #EBEEF5;
+}
+
+.disbursements-table tbody tr:hover {
+  background: #F5F7FA;
+}
+
 /* Amount cell */
 .amount-cell {
   font-weight: 600;
@@ -338,6 +374,34 @@ onMounted(() => {
   text-align: center;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.page-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #CACACA;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #2C2A29;
+}
+
+.page-btn:hover:not(:disabled) {
+  border-color: #2C2A29;
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page-info {
+  font-size: 0.85rem;
+  color: #616161;
 }
 
 /* Loading */
