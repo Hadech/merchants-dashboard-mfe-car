@@ -108,7 +108,7 @@ async function handleLogin() {
     await fetchAndSetMerchant()
 
     // 3. Navigate to home
-    await navigateTo('/transactions')
+    await navigateTo('/home')
   } catch (e: unknown) {
     console.error('[Login] Error:', e)
     const message = e instanceof Error ? e.message : 'Error al iniciar sesión'
@@ -142,11 +142,23 @@ async function fetchAndSetMerchant() {
 
     const merchants = response?.data?.merchants || []
     if (merchants.length > 0) {
+      // Store both UUID and numeric merchant IDs
       const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-      const merchant = merchants.find(m => uuidRegex.test(m.id)) || merchants[0]
-      sessionStorage.setItem('userPrincipalID', merchant.id)
-      localStorage.setItem('userPrincipalID', merchant.id)
-      console.log('[Login] userPrincipalID set:', merchant.id)
+      const uuidMerchant = merchants.find(m => uuidRegex.test(m.id))
+      const numericMerchant = merchants.find(m => !uuidRegex.test(m.id))
+
+      // APIs like disbursements need the numeric ID as User-Principal-Id
+      // Use numeric if available, fallback to UUID
+      const principal = numericMerchant || uuidMerchant || merchants[0]
+      sessionStorage.setItem('userPrincipalID', principal.id)
+      localStorage.setItem('userPrincipalID', principal.id)
+
+      // Store UUID separately if needed
+      if (uuidMerchant) {
+        localStorage.setItem('merchantUUID', uuidMerchant.id)
+      }
+
+      console.log('[Login] userPrincipalID set:', principal.id, 'uuid:', uuidMerchant?.id)
     } else {
       console.warn('[Login] No merchants found')
     }

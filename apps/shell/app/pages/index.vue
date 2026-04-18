@@ -1,6 +1,6 @@
 <script setup lang="ts">
 onMounted(() => {
-  navigateTo('/transactions', { replace: true })
+  navigateTo('/disbursements', { replace: true })
 })
 </script>
 

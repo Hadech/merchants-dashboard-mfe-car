@@ -126,10 +126,10 @@ const pageSize = ref(25)
 const totalResults = ref(0)
 
 const columns = [
-  { key: 'amount_in_cents', label: 'Monto' },
-  { key: 'status', label: 'Estado' },
-  { key: 'bank_account', label: 'Cuenta bancaria' },
-  { key: 'created_at', label: 'Fecha de creación' },
+  { id: 'amount_in_cents', key: 'amount_in_cents', label: 'Monto' },
+  { id: 'status', key: 'status', label: 'Estado' },
+  { id: 'bank_account', key: 'bank_account', label: 'Cuenta bancaria' },
+  { id: 'created_at', key: 'created_at', label: 'Fecha de creación' },
 ]
 
 const dateShortcuts = [

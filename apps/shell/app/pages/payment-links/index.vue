@@ -18,7 +18,7 @@
       </div>
 
       <!-- Links Box -->
-      <div class="links-box" v-loading="loading">
+      <div class="links-box">
         <!-- Tabs: Activos / Inactivos -->
         <div class="links-box__tabs">
           <div
