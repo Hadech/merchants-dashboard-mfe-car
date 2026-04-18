@@ -33,7 +33,7 @@
         <div class="container-buttons">
           <div class="container-buttons__filter">
             <div class="filter-button" @click="showFilters = !showFilters">
-              <span class="material-icons filter-icon">filter_list</span>
+              <UIcon name="i-heroicons-funnel" class="filter-icon" />
               <span class="filter-text">{{ showFilters ? 'Cerrar' : 'Filtros' }}</span>
             </div>
           </div>
@@ -187,7 +187,7 @@
                   <div class="last-cell">
                     <div class="action-icon-wrapper">
                       <p class="see-more">Ver más</p>
-                      <span class="material-icons action-icon">arrow_forward</span>
+                      <UIcon name="i-heroicons-arrow-right" class="action-icon" />
                     </div>
                   </div>
                 </td>
@@ -479,7 +479,7 @@ onMounted(fetchData)
 }
 .filter-button .filter-icon {
   color: #2A2C29;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 .filter-button .filter-text {
   color: #2A2C29;
