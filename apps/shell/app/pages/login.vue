@@ -100,54 +100,58 @@ async function handleLogin() {
 
   loading.value = true
   try {
-    // 1. Login with Cognito
+    // 1. Login via sessions/login API (envelope encryption, same as legacy)
     await login(credentials)
+    console.log('[Login] Session login successful, userName:', localStorage.getItem('userName'))
 
-    // 2. Fetch merchants to get userPrincipalID (same as legacy flow)
-    try {
-      const api = createApiClient({ useAuth: true, refreshSession: undefined })
-      
-      // Extract email from Cognito idToken (the username might be a nickname, not an email)
-      const idToken = localStorage.getItem('idToken')
-      let email = credentials.username.toLowerCase()
-      if (idToken) {
-        try {
-          const payload = JSON.parse(atob(idToken.split('.')[1]))
-          console.log('[Login] idToken payload:', { email: payload.email, sub: payload.sub, preferred_username: payload.preferred_username })
-          if (payload.email) {
-            email = payload.email.toLowerCase()
-          }
-        } catch (e) { console.warn('[Login] Could not decode idToken:', e) }
-      }
-      
-      console.log('[Login] Fetching merchants for email:', email)
-      
-      // ofetch returns the parsed body directly (no axios .data wrapper)
-      // API response shape: { data: { merchants: [...] } }
-      const response = await api<{ data: { merchants: Array<{ id: string; permissions: string[]; roleName: string }> } }>(
-        `/merchant-users/user/email/${email}`
-      )
-      console.log('[Login] Merchant response:', JSON.stringify(response).slice(0, 500))
-      const merchants = response?.data?.merchants || []
-      if (merchants.length > 0) {
-        const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-        const merchant = merchants.find(m => uuidRegex.test(m.id)) || merchants[0]
-        sessionStorage.setItem('userPrincipalID', merchant.id)
-        localStorage.setItem('userPrincipalID', merchant.id)
-        console.log('[Login] userPrincipalID set:', merchant.id)
-      } else {
-        console.warn('[Login] No merchants found in response:', response)
-      }
-    } catch (permError) {
-      console.warn('[Login] Could not fetch merchants after login:', permError)
-    }
+    // 2. Fetch merchants to get userPrincipalID
+    await fetchAndSetMerchant()
 
-    navigateTo('/transactions')
+    // 3. Navigate to home
+    await navigateTo('/transactions')
   } catch (e: unknown) {
+    console.error('[Login] Error:', e)
     const message = e instanceof Error ? e.message : 'Error al iniciar sesión'
     toast.error('No puedes ingresar', message)
   } finally {
     loading.value = false
+  }
+}
+
+async function fetchAndSetMerchant() {
+  try {
+    const token = localStorage.getItem('token')
+    const refreshToken = localStorage.getItem('refreshToken')
+
+    // We need at least a refreshToken to proceed
+    if (!token && !refreshToken) {
+      console.warn('[Login] No tokens available to fetch merchants')
+      return
+    }
+
+    const api = createApiClient({ useAuth: true, usePrefix: true, refreshSession: undefined })
+
+    // Use the email saved during login (from sessionPayload)
+    const email = localStorage.getItem('userEmail') || credentials.username.toLowerCase()
+    console.log('[Login] Fetching merchants for email:', email)
+
+    const response = await api<{ data: { merchants: Array<{ id: string; permissions: string[]; roleName: string }> } }>(
+      `/merchant-users/user/email/${email}`
+    )
+    console.log('[Login] Merchant response:', JSON.stringify(response).slice(0, 500))
+
+    const merchants = response?.data?.merchants || []
+    if (merchants.length > 0) {
+      const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+      const merchant = merchants.find(m => uuidRegex.test(m.id)) || merchants[0]
+      sessionStorage.setItem('userPrincipalID', merchant.id)
+      localStorage.setItem('userPrincipalID', merchant.id)
+      console.log('[Login] userPrincipalID set:', merchant.id)
+    } else {
+      console.warn('[Login] No merchants found')
+    }
+  } catch (permError) {
+    console.warn('[Login] Could not fetch merchants after login:', permError)
   }
 }
 </script>
