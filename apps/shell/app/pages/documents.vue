@@ -92,34 +92,35 @@
 
         <!-- Desktop table -->
         <template v-else-if="hasFetched && documents.length > 0">
-          <UTable :columns="columns" :rows="documents" class="documents-table">
-            <template #cell-type="{ row }">
-              <span class="type-cell">
-                <UIcon :name="documentTypeToIcon(row.type)" class="type-icon" />
-                {{ documentTypeToString(row.type) }}
-              </span>
-            </template>
-
-            <template #cell-created_at="{ row }">
-              <span>{{ formatDateFull(row.created_at) }}</span>
-            </template>
-
-            <template #cell-download="{ row }">
-              <a class="download-link" @click="downloadDocument(row.id)">
-                <strong>Descargar&nbsp;</strong>
-                <UIcon name="i-heroicons-arrow-down-tray" />
-              </a>
-            </template>
-          </UTable>
+          <table class="documents-table">
+            <thead>
+              <tr>
+                <th>Tipo de reporte</th>
+                <th>Fecha de reporte</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="row in documents" :key="row.id">
+                <td>
+                  <span class="type-cell">{{ documentTypeToString(row.type) }}</span>
+                </td>
+                <td>{{ formatDateFull(row.created_at) }}</td>
+                <td>
+                  <a class="download-link" @click="downloadDocument(row.id)">
+                    <strong>Descargar</strong>
+                    <span class="ic ic_download"></span>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
           <!-- Pagination -->
-          <div v-if="totalResults > 0" class="pagination-container">
-            <UPagination
-              v-model="currentPage"
-              :total="totalResults"
-              :items-per-page="pageSize"
-              @update:model-value="onPageChanged"
-            />
+          <div v-if="totalResults > pageSize" class="pagination-container">
+            <button class="page-btn" :disabled="currentPage <= 1" @click="onPageChanged(currentPage - 1)">‹</button>
+            <span class="page-info">Página {{ currentPage }} de {{ Math.ceil(totalResults / pageSize) }}</span>
+            <button class="page-btn" :disabled="currentPage >= Math.ceil(totalResults / pageSize)" @click="onPageChanged(currentPage + 1)">›</button>
           </div>
         </template>
 
@@ -395,11 +396,27 @@ onMounted(() => {
   font-weight: 800;
 }
 
-/* Table styling — matches legacy */
+/* Table styling */
 .documents-table {
   width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   margin-bottom: 10px;
 }
+.documents-table thead { background: #FAFAFA; }
+.documents-table th {
+  text-align: left; padding: 12px 16px;
+  font-size: 0.8rem; font-weight: 600; color: #616161;
+  text-transform: uppercase; border-bottom: 1px solid #EBEEF5;
+}
+.documents-table td {
+  padding: 12px 16px; font-size: 0.875rem; color: #2C2A29;
+  border-bottom: 1px solid #EBEEF5;
+}
+.documents-table tbody tr:hover { background: #F5F7FA; }
 
 .type-cell {
   display: flex;
@@ -431,7 +448,17 @@ onMounted(() => {
   margin-top: 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
 }
+.page-btn {
+  width: 32px; height: 32px; border: 1px solid #CACACA; border-radius: 4px;
+  background: #fff; cursor: pointer; font-size: 1rem; color: #2C2A29;
+}
+.page-btn:hover:not(:disabled) { border-color: #2C2A29; }
+.page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.page-info { font-size: 0.85rem; color: #616161; }
 
 /* Loading */
 .loading-state {
